@@ -3,7 +3,7 @@
 import RepositoryCard from './RepositoryCard';
 import './RepositoryList.css';
 
-function RepositoryList({ repos }) {
+function RepositoryList({ repos, onSelect }) {
   // Sort repos by stars (descending), take top 5
   const topRepos = [...repos]
     .sort((a, b) => b.stargazers_count - a.stargazers_count)
@@ -23,7 +23,7 @@ function RepositoryList({ repos }) {
       <h3 className="section-title"><span>🏆</span> Most-Starred Repositories</h3>
       <div className="repos-grid">
         {topRepos.map((repo) => (
-          <RepositoryCard key={repo.id} repo={repo} />
+          <RepositoryCard key={repo.id} repo={repo} onSelect={onSelect} />
         ))}
       </div>
     </div>
